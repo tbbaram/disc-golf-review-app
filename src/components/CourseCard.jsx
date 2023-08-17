@@ -1,14 +1,16 @@
 import React from "react";
+import CourseReviews from "./CourseReviews";
 
-function Courses() {
+function CourseCard({course}) {
     
     return (
         <div>
-            <form>
-                <h1>Courses</h1>
-            </form>
+            <h1>{course.title}</h1>   
+            <h3>{course.description}</h3>  
+            <h4>{course.address}</h4>
+            <CourseReviews reviews={course.reviews}/>
         </div>
     )
 }
 
-export default Courses;
+export default CourseCard;

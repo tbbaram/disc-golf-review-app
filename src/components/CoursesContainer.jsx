@@ -1,21 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import CourseCard from './CourseCard';
 
 function CoursesContainer() {
     
-    // const [courses, setCourses] = useState([])
+    const [courses, setCourses] = useState([])
+
 
         useEffect(() => {
             fetch("http://localhost:3000/discgolfcourses")
             .then(r => r.json())
-            .then(data => console.log(data))
+            .then(data => setCourses(data))
         }, [])
     
+        const courseCards = courses.map(course => <CourseCard course={course} key={course.title}/>)
+
 
     return (
         <div>
-            <h3>Life is good now</h3>
+            {courseCards}
         </div>
-    )
-}
+        )
+    }
 
 export default CoursesContainer;
